@@ -11,19 +11,25 @@ support into containers, simplifying the setup process.
 * CUDA compatible GPU
 
 ## Quickstart
-### Install latest Nvidia drivers  
+#### Install latest Nvidia drivers  
 ```console
 sudo ubuntu-drivers autoinstall
 ```
-Restart machine if new drivers were installed
+There should be equivalent command for different distributions of linux  
+Restart machine if new drivers were installed  
+#### Confirm drivers installed successfully
+```
+sudo lshw -c display
+```
+You should see this entry under your nvidia graphics card: `configuration: driver=nvidia`
 
-### Install drivers, Docker, and nvidia-docker  
+#### Install drivers, Docker, and nvidia-docker  
 ```console  
 chmod +x NvidiaDockerSetup.sh  
 ./NvidiaDockerSetup.sh  
 ```
 
-### Build the Docker image  
+#### Build the Docker image  
 ```console  
 sudo docker build .  
 ```  
@@ -32,7 +38,7 @@ Include ```--build-arg GPUS=<num_GPUS>``` flag if using more than one GPU. If yo
 sudo docker build --build-arg GPUS=2 .  
 ```  
 
-### Run a Docker container
+#### Run a Docker container
 ```console
 sudo docker container run --rm -dit --gpus all --name <container_name> <image_id>
 ```
@@ -41,12 +47,12 @@ sudo docker container run --rm -dit --gpus all --name <container_name> <image_id
 sudo docker image ls
 ```
 
-### SSH into the Docker container
+#### SSH into the Docker container
 ```console
 sudo docker exec -it <container_name> bash
 ```
 
-### Make sure it ain't broke
+#### Make sure it ain't broke
 ```
 cd /src/darknet./darknet 
 detect cfg/yolov3.cfg yolov3.weights data/dog.jpg
@@ -57,14 +63,14 @@ If there is an error while loading weights such as an **out of memory** or **ass
 * Get a better GPU with more memory
 
 ## Common errors/FAQ
-### Can I use this Docker on Windows/Mac
+#### Can I use this Docker on Windows/Mac
 No, Docker is compatible but nvidia-docker is not.
-### Can I use this Docker if my host machine is a virtual machine?
+#### Can I use this Docker if my host machine is a virtual machine?
 No, getting CUDA support on a virtual machine would be very tedious, if even possible.
-### How do I confirm that my GPU is linked to Nvidia drivers?
+#### How do I confirm that my GPU is linked to Nvidia drivers?
 ```console
 sudo lshw -c video
 ```
 You should see **configuration: driver=nvidia**
-### Why is my GPU not linked to the Nvidia drivers?
+#### Why is my GPU not linked to the Nvidia drivers?
 Make sure **secure boot mode** is off, which is often on by default in laptops. This can usually be done in BIOS. 
