@@ -1,8 +1,13 @@
 # ZotBins Waste Image Classification Docker
 
 ## Why Docker?
-ZotBins members will be able to train and classify images without having to worry about hardware/software compatibility or environment 
-setup. Everyone will be able to run a few scripts and start training immediately. Additionally, Docker 19.03 integrated GPU support into containers, simplifying the setup process.
+ZotBins members will be able to train and classify images in portable Docker containers without having to worry about hardware/software compatibility or environment setup.  
+Everyone will be able to run a few scripts and start training immediately. Additionally, Docker 19.03 integrated GPU support into containers, simplifying the setup process.
+
+## Portability Limitations
+The portability of the included Docker script may be limited in the future. It pulls the image for CUDA 10.2, which is the latest version at the time of first commit. Future Nvidia GPUS may only be compatible with new versions of CUDA.  It is also possible that newer CUDA versions are incompatible with darknet or other unmaintained tools. We ask that users please notify the authors if the repository is out of date.
+* Nvidia docker hub: https://hub.docker.com/r/nvidia/cuda/
+* Compatibility information: https://docs.nvidia.com/deploy/cuda-compatibility/index.html
 
 ## Prerequisites
 * any Linux distribution
