@@ -2,8 +2,7 @@
 
 ## Why Docker?
 ZotBins members will be able to train and classify images without having to worry about hardware/software compatibility or environment 
-setup. Everyone will be able to run a few scripts and start training immediately. Additionally, Docker 19.03 integrated GPU
-support into containers, simplifying the setup process.
+setup. Everyone will be able to run a few scripts and start training immediately. Additionally, Docker 19.03 integrated GPU support into containers, simplifying the setup process.
 
 ## Prerequisites
 * any Linux distribution
@@ -54,8 +53,8 @@ sudo docker exec -it <container_name> bash
 
 #### Make sure it ain't broke
 ```
-cd /src/darknet./darknet 
-detect cfg/yolov3.cfg yolov3.weights data/dog.jpg
+cd /src/darknet
+./darknet detect cfg/yolov3.cfg yolov3.weights data/dog.jpg
 ```
 It should run really fast (<1 minute)  
 If there is an error while loading weights such as an **out of memory** or **assertion** error, you can either
@@ -73,4 +72,5 @@ sudo lshw -c video
 ```
 You should see **configuration: driver=nvidia**
 #### Why is my GPU not linked to the Nvidia drivers?
-Make sure **secure boot mode** is off, which is often on by default in laptops. This can usually be done in BIOS. 
+Make sure **secure boot mode** is off, which is often on by default in laptops. This can usually be done in BIOS.  
+There can be many other reasons why the drivers were not installed correctly, and its best to google your specific issues.
