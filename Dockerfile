@@ -1,5 +1,5 @@
 
-FROM nvidia/cuda
+FROM nvidia/cuda:10.2-cudnn7-devel
 LABEL maintainer="zotbinsuci@gmail.com"
 
 # set to number of GPUs used for training
@@ -17,7 +17,7 @@ RUN mkdir /src
 WORKDIR /src
 RUN git clone https://github.com/pjreddie/darknet
 WORKDIR /src/darknet
-RUN sed -i "s/GPU=.*/GPU=${GPUS}/" Makefile && make -j $(nproc)
+RUN sed -i "s/GPU=.*/GPU=${GPUS}/" Makefile && sed -i "s/CUDNN=.*/CUDNN=1/" Makefile && make -j $(nproc)
 
 # TODO: @Luaak put here what you do for setup
 #		for dataset, I think you may want to set up some sort of shared file between docker and host...

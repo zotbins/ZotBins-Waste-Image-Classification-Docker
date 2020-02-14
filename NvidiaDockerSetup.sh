@@ -31,5 +31,5 @@ curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.li
 sudo apt-get update && sudo apt-get install -y nvidia-container-toolkit
 sudo systemctl restart docker
 
-# CUDA docker image 
-sudo docker pull nvidia/cuda
+# CUDA docker image, this version may become out of date...
+sudo docker pull nvidia/cuda:10.2-cudnn7-devel
