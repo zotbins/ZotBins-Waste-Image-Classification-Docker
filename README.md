@@ -30,11 +30,12 @@ chmod +x NvidiaDockerSetup.sh
 
 #### Build the Docker image  
 ```console  
-sudo docker build .  
+sudo docker build . -t <image name>
 ```  
-Include ```--build-arg GPUS=<num_GPUS>``` flag if using more than one GPU. If you have two GPUS:  
+Where `<image name>` is in all lowercase. Include ```--build-arg GPUS=<num_GPUS>``` flag if using more than one GPU.   
+For exmample, to build an image named `zotbinsdl` with two GPUS:  
 ```console  
-sudo docker build --build-arg GPUS=2 .  
+sudo docker build -t zotbinsdl --build-arg GPUS=2 .  
 ```  
 
 #### Run a Docker container
