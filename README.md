@@ -59,7 +59,7 @@ cd /src/darknet
 ```
 It should run really fast (<1 minute)  
 If there is an error while loading weights such as an **out of memory** or **assertion** error, you can either
-* Open **/src/darnket/yolov3.cfg** and decrease the **batchsize**
+* Open **cfg/yolov3.cfg** and decrease the **batchsize**
 * Get a better GPU with more memory
 
 ## Common errors/FAQ
